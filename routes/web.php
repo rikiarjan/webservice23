@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\InstitutionController;
+use App\Http\Controllers\PortofolioController;
 
-Route::get('/', function () {
+Route::get('', function () {
     return view('index');
 });
 
@@ -36,3 +37,11 @@ Route::get('test/{kode}', [TestController::class, 'index']);
 // route untuk course
 Route::get('course', [CourseController::class, 'index'])->name('course.index');
 Route::get('institution', [InstitutionController::class, 'index'])->name('institution.index');
+
+// route untuk portofolio2
+// Route::get('/portofolio', [PortofolioController::class, 'portofolio']);
+// Route::get('/portofolio', function () {
+//     return view('portofolio');
+// });
+
+Route::get('portofolio/{ubg}', [PortofolioController::class, 'index']);
