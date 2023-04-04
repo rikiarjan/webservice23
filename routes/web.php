@@ -36,6 +36,10 @@ Route::get('test/{kode}', [TestController::class, 'index']);
 
 // route untuk course
 Route::get('course', [CourseController::class, 'index'])->name('course.index');
+
+Route::get('course/create', [CourseController::class, 'create'])->name('course.create');
+Route::post('course/store', [CourseController::class, 'store'])->name('course.store');
+
 Route::get('institution', [InstitutionController::class, 'index'])->name('institution.index');
 
 // route untuk portofolio2
