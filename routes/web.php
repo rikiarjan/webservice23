@@ -5,6 +5,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\BlogController;
 
 Route::get('', function () {
     return view('index');
@@ -49,3 +50,9 @@ Route::get('institution', [InstitutionController::class, 'index'])->name('instit
 // });
 
 Route::get('portofolio/{ubg}', [PortofolioController::class, 'index']);
+
+
+//route untuk blog
+Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
+Route::post('blog/store', [BlogController::class, 'store'])->name('blog.store');
