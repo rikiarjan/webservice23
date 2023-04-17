@@ -20,4 +20,19 @@ class CourseController extends Controller
     {
         return view('course.create');
     }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
+        $request->validate([
+            'name' => 'required|min:5',
+            'description' => 'required|min:15',
+            'price' => 'required|numeric',
+            'insitution_id' => 'required'
+
+
+        ]);
+        // $data = Blog::create($request->all());
+        // return redirect('blog');
+    }
 }
