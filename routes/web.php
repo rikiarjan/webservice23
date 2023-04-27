@@ -56,3 +56,8 @@ Route::get('portofolio/{ubg}', [PortofolioController::class, 'index']);
 Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
 Route::post('blog/store', [BlogController::class, 'store'])->name('blog.store');
+Route::delete('blog/{id}', [BlogController::class, 'destroy'])->name('blog.delete');
+Route::get('blog/edit/{blog}', [BlogController::class, 'edit'])->name('blog.edit');
+Route::patch('blog/update{blog}', [BlogController::class, 'update'])->name('blog.update');
+
+

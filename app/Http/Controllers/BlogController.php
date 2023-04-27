@@ -27,4 +27,23 @@ class BlogController extends Controller
         $data = Blog::create($request->all());
         return redirect('blog');
     }
+    
+    public function destroy(Blog $id)
+    {
+        $id->delete();
+        return redirect('blog');
+
+    }
+
+    public function edit($id)
+    {
+        $data = Blog::find($id);
+        return view('blog.edit', compact('data'));
+    }  
+
+    public function update (Request $request, Blog $blog)
+    {
+        $blog->update($request->all());
+        return redirect('blog');
+    }
 }
