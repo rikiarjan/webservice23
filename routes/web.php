@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Biaya236Controller;
 
 Route::get('', function () {
     return view('index');
@@ -59,5 +60,13 @@ Route::post('blog/store', [BlogController::class, 'store'])->name('blog.store');
 Route::delete('blog/{id}', [BlogController::class, 'destroy'])->name('blog.delete');
 Route::get('blog/edit/{blog}', [BlogController::class, 'edit'])->name('blog.edit');
 Route::patch('blog/update{blog}', [BlogController::class, 'update'])->name('blog.update');
+
+//route untuk biaya
+Route::get('biaya', [Biaya236Controller::class, 'index'])->name('biaya.index');
+Route::get('biaya/create', [Biaya236Controller::class, 'create'])->name('biaya.create');
+Route::post('biaya/store', [Biaya236Controller::class, 'store'])->name('biaya.store');
+Route::delete('biaya/{id}', [Biaya236Controller::class, 'destroy'])->name('biaya.delete');
+Route::get('biaya/edit/{biaya}', [Biaya236Controller::class, 'edit'])->name('biaya.edit');
+Route::patch('biaya/update{biaya}', [Biaya236Controller::class, 'update'])->name('biaya.update');
 
 
