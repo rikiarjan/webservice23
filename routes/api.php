@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\CustomerController;
+use App\Http\Controllers\API\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::get('customers', [CustomerController::class, 'index']);
     Route::get('customer/{id}', [CustomerController::class, 'show']);
+
+
+    Route::get('products', [\App\Http\Controllers\API\ProductController::class, 'index']);
 
     // Route::get('blogs', [BlogController::class, 'index']);
     // Route::get('blog/{id}', [BlogController::class, 'show']);
