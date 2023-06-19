@@ -6,16 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\ProductResource;
 
 class ProductController extends Controller
 {
     // tampil
     public function index()
     {
-        $datas = Product::all();
+        // $datas = Product::all();
+        $datas = Product::with('category')->get();
+        $data = ProductResource::collection($datas);
+
         return response()->json([
             'pesan' => 'Data Berhasil Ditemukan',
-            'data' => $datas
+            'data' => $data
         ], 200);
     }
     // tampil berdasarkan id
@@ -27,11 +31,27 @@ class ProductController extends Controller
         }
         return response()->json(['pesan' => 'Data Berhasil Ditemukan', 'data' => $data], 200);
     }
+
+    // public function show($id)
+    // {
+    //     $data = Product::where('id', $id)->first();
+    //     if (empty($data)) {
+    //         return response()->json([
+    //             'pesan' => 'Data tidak ditemukan',
+    //             'data' => $data
+    //         ], 404);
+    //     }
+
+    //     return response()->json([
+    //         'pesan' => 'Data ditemukan',
+    //         'data' => $data
+    //     ], 200);
+    // }
+
     // create
     public function store(Request $request)
     {
         $validasi = Validator::make($request->all(), [
-            'id' => 'required|numeric|unique:products',
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
@@ -51,7 +71,6 @@ class ProductController extends Controller
             return response()->json(['pesan' => 'data tidak ditemukan', 'data' => ''], 404);
         } else {
             $validasi = Validator::make($request->all(), [
-                'id' => 'required|numeric|unique:products',
                 'name' => 'required',
                 'description' => 'required',
                 'price' => 'required|numeric',
@@ -75,11 +94,11 @@ class ProductController extends Controller
         return response()->json(['pesan' => 'Data Berhasil dihapus', 'data' => $products]);
     }
 
-    // tes relasi
-    public function indexRelasi()
-    {
-        $products = Product::with('category')->get();
-        return response()->json(['pesan' => 'Data Berhasil ditemukan', 'data' => $products], 200);
-    }
-   
+    // // tes relasi
+    // public function indexRelasi()
+    // {
+    //     $products = Product::with('category')->get();
+    //     return response()->json(['pesan' => 'Data Berhasil ditemukan', 'data' => $products], 200);
+    // }
+
 }

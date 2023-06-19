@@ -39,14 +39,19 @@ Route::group(['prefix'=>'v1'], function () {
     Route::post('product', [ProductController::class, 'store']);
     Route::put('product/{id}', [ProductController::class, 'update']);
     Route::delete('product/{id}', [ProductController::class, 'destroy']);
+    //tes relasi antar tabel
+    Route::get('producR', [ProductController::class, 'indexRelasi']);
+
     
     Route::get('categories', [CategorieController::class, 'index']);
     Route::get('categorie/{id}', [CategorieController::class, 'show']);
     Route::post('categorie', [CategorieController::class, 'store']);
     Route::put('categorie/{id}', [CategorieController::class, 'update']);
     Route::delete('categorie/{id}', [CategorieController::class, 'destroy']);
-    });
-    
+    //tes relasi antar tabel
+    Route::get('categoriR', [CategorieController::class, 'indexRelasi']);
+
+});
 
 
 

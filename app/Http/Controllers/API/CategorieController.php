@@ -12,7 +12,8 @@ class CategorieController extends Controller
     // tampil
     public function index()
     {
-        $datas = Categorie::all();
+        // $datas = Categorie::all();
+        $datas = Categorie::with('product')->get();
         return response()->json([
             'pesan' => 'Data Berhasil Ditemukan',
             'data' => $datas
@@ -71,10 +72,10 @@ class CategorieController extends Controller
         return response()->json(['pesan' => 'Data Berhasil dihapus', 'data' => $category]);
     }
     
-    // tes relasi
-    public function indexRelasi()
-    {
-        $category = Categorie::with('product')->get();
-        return response()->json(['pesan' => 'Data Berhasil ditemukan', 'data' => $category], 200);
-    }
+    // // tes relasi
+    // public function indexRelasi()
+    // {
+    //     $category = Categorie::with('product')->get();
+    //     return response()->json(['pesan' => 'Data Berhasil ditemukan', 'data' => $category], 200);
+    // }
 }
