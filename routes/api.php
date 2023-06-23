@@ -6,6 +6,8 @@ use App\Http\Controllers\API\BlogController;
 use App\Http\Controllers\API\CustomerController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\CategorieController;
+use App\Http\Controllers\API\MatakuliahController;
+use App\Http\Controllers\API\JurusanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,29 @@ Route::group(['prefix'=>'v1'], function () {
     Route::get('categoriR', [CategorieController::class, 'indexRelasi']);
 
 });
+
+//TUGAS CRUD dan Relasi tabel MATAKULIAH dengan tabel JURUSAN
+
+Route::group(['prefix'=>'v1'], function () {
+    Route::get('matakuliahs', [MatakuliahController::class, 'index']);
+    Route::get('matakuliah/{id}', [MatakuliahController::class, 'show']);
+    Route::post('matakuliah', [MatakuliahController::class, 'store']);
+    Route::put('matakuliah/{id}', [MatakuliahController::class, 'update']);
+    Route::delete('matakuliah/{id}', [MatakuliahController::class, 'destroy']);
+    //tes relasi antar tabel
+    Route::get('matakuliahR', [MatakuliahController::class, 'indexRelasi']);
+    
+    Route::get('jurusans', [JurusanController::class, 'index']);
+    Route::get('jurusan/{id}', [JurusanController::class, 'show']);
+    Route::post('jurusan', [JurusanController::class, 'store']);
+    Route::put('jurusan/{id}', [JurusanController::class, 'update']);
+    Route::delete('jurusan/{id}', [JurusanController::class, 'destroy']);
+    //tes relasi antar tabel
+    Route::get('jurusanR', [JurusanController::class, 'indexRelasi']);
+
+});
+
+
 
 
 

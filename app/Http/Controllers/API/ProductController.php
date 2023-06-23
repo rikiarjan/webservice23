@@ -63,6 +63,29 @@ class ProductController extends Controller
         $data = Product::create($request->all());
         return response()->json(['pesan' => 'data berhasil ditambahkan', 'data' => $data], 200);
     }
+
+    // public function store(Request $request)
+    // {
+    //     // proses validasi
+    //     $validate = Validator::make($request->all(), [
+    //         'name' => 'required|min:4',
+    //         'description' => 'required|min:10',
+    //         'price' => 'required|numeric',
+    //         'category_id' => 'required|integer',
+    //     ]);
+
+    //     if ($validate->fails()) {
+    //         return $validate->errors();
+    //     }
+
+    //     // proses simpan data
+    //     $data = Product::create($request->all());
+    //     return response()->json([
+    //         'pesan' => 'Data berhasil disimpan',
+    //         'data' => $data
+    //     ], 201);
+    // }
+
     // update
     public function update(Request $request, $id)
     {
