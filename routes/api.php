@@ -8,6 +8,7 @@ use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\CategorieController;
 use App\Http\Controllers\API\MatakuliahController;
 use App\Http\Controllers\API\JurusanController;
+use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,7 @@ Route::group(['prefix'=>'v1'], function () {
 //TUGAS CRUD dan Relasi tabel MATAKULIAH dengan tabel JURUSAN
 
 Route::group(['prefix'=>'v1'], function () {
+    // Route::get('matakuliahs', [MatakuliahController::class, 'index'])->middleware(['auth:sanctum']);
     Route::get('matakuliahs', [MatakuliahController::class, 'index']);
     Route::get('matakuliah/{id}', [MatakuliahController::class, 'show']);
     Route::post('matakuliah', [MatakuliahController::class, 'store']);
@@ -73,6 +75,13 @@ Route::group(['prefix'=>'v1'], function () {
     Route::delete('jurusan/{id}', [JurusanController::class, 'destroy']);
     //tes relasi antar tabel
     Route::get('jurusanR', [JurusanController::class, 'indexRelasi']);
+
+    Route::post('/register', [AuthController::class, 'registrasi']);
+    Route::post('/login', [AuthController::class, 'login']);
+
+    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+        return $request->user();
+    });
 
 });
 
